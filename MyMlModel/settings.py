@@ -19,11 +19,12 @@ SECRET_KEY = 'django-insecure-1uco=85h4(zzctpp7oa#5bb%=wu#pddh-+l_gu+veski===jqc
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*',
+ALLOWED_HOSTS = ["*",
                  "http://127.0.0.1:3000",
                  "http://127.0.0.1",
                  "http://localhost:3000",
                  "http://localhost",
+                 "https://django-ml-app.onrender.com"
                  ]
 
 # Application definition
@@ -131,6 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
 CORS_ORIGIN_WHITELIST = [
+    "https://django-ml-app.onrender.com",
     "http://127.0.0.1:3000",
     "http://127.0.0.1",
     "http://localhost:3000",
