@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from myMLtestapp.views import my_page
 
 urlpatterns = [
+    path('', my_page, name='my_page'),
     path('admin/', admin.site.urls),
     path('api/', include('myMLtestapp.urls')),
 ]

@@ -145,7 +145,8 @@ def heart_disease_create(request):
 class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = HeartDisease.objects.all()
     serializer_class = HeartSerializer
-    lookup_field = 'id'
+    # lookup_field = 'id'
+    lookup_url_kwarg = 'id'
 
 
 # # create a serializer function based view api to view patient details by id, and user_id

@@ -1,0 +1,26 @@
+{# create a simple html page #}
+
+<!doctype html>
+<html lang="">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>My Page</h1>
+<p>This is my page.</p>
+<p>For visiting my api pages click this </p>
+<p> For viewing patients lists <a href="{% url 'myMLtestapp:heart_disease_list' %}">Click here</a></p>
+<p> For viewing submit form <a href="{% url 'myMLtestapp:submit_form' %}">Click here</a></p>
+{#<p> For viewing patient page by id <a href="{% url 'myMLtestapp:heart_disease_c_list' id=id_value %}">Click here</a>#}
+{#</p>#}
+<p>For visiting admin page click this </p>
+<p> Admin Page <a href="{% url 'admin:index' %}">Click here</a></p>
+
+</body>
+</html>
+

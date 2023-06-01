@@ -9,6 +9,8 @@ env = environ.Env()
 
 environ.Env.read_env()
 
+AWS_S3_FILE_OVERWRITE = False
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -19,12 +21,12 @@ SECRET_KEY = 'django-insecure-1uco=85h4(zzctpp7oa#5bb%=wu#pddh-+l_gu+veski===jqc
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*'
-                 # 'http://127.0.0.1:3000',
-                 # 'http://127.0.0.1',
-                 # 'http://localhost:3000',
-                 # 'http://localhost',
-                 # 'https://django-ml-app.onrender.com'
+ALLOWED_HOSTS = ['*',
+                 'http://127.0.0.1:3000',
+                 'http://127.0.0.1',
+                 'http://localhost:3000',
+                 'http://localhost',
+                 'https://django-ml-app.onrender.com'
                  ]
 
 # Application definition
@@ -123,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
@@ -133,11 +135,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
-# CORS_ORIGIN_WHITELIST = [
-#     'https://django-ml-app.onrender.com',
-#     'http://127.0.0.1:3000',
-#     'http://127.0.0.1',
-#     'http://localhost:3000',
-#     'http://localhost'
-# ]
+CORS_ORIGIN_WHITELIST = [
+    'https://django-ml-app.onrender.com',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1',
+    'http://localhost:3000',
+    'http://localhost'
+]
 CORS_ALLOW_ALL_ORIGINS = True
