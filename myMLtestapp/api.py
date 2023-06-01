@@ -87,7 +87,7 @@ class SubmitForm(generics.CreateAPIView):
 def apply_MLP_model(sender, instance, created, **kwargs):
     if created:
         # Load the saved model
-        model = joblib.load('')
+        model = joblib.load('savedModels/MLP_model.joblib')
 
         # Prepare the input data
         X = np.array(
