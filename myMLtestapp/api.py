@@ -18,51 +18,6 @@ def heart_disease_list(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# class SubmitForm(generics.CreateAPIView):
-#     serializer_class = HeartSerializer
-#
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-#         if serializer.is_valid():
-#             heart_disease = serializer.save(commit=False)
-#             # Create a new HeartDisease instance with the input data
-#             heart_disease = HeartDisease(**serializer.validated_data)
-#
-#             # Set the submitted_time field explicitly
-#             heart_disease.submitted_time = timezone.now()
-#
-#             # Save the instance, which will trigger the apply_nn_model signal handler
-#             heart_disease.save()
-#
-#             headers = self.get_success_headers(serializer.data)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-#         # serializer.is_valid(raise_exception=True)
-
-
-# from rest_framework.response import Response
-# from rest_framework import status
-#
-#
-# class SubmitForm(generics.CreateAPIView):
-#     serializer_class = HeartSerializer
-#
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-#         if serializer.is_valid():
-#             # Create a new HeartDisease instance with the input data
-#             heart_disease = serializer.save()
-#
-#             # Set the submitted_time field explicitly
-#             heart_disease.submitted_time = timezone.now()
-#
-#             # Save the instance, which will trigger the apply_nn_model signal handler
-#             heart_disease.save()
-#
-#             headers = self.get_success_headers(serializer.data)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-#         serializer.is_valid(raise_exception=True)
-#
-
 class SubmitForm(generics.CreateAPIView):
     serializer_class = HeartSerializer
 
@@ -87,7 +42,7 @@ class SubmitForm(generics.CreateAPIView):
 def apply_MLP_model(sender, instance, created, **kwargs):
     if created:
         # Load the saved model
-        model = joblib.load('savedModels/MLP_model.joblib')
+        model = joblib.load('myMLtestapp/savedModels/MLP_model.joblib')
 
         # Prepare the input data
         X = np.array(
@@ -147,7 +102,6 @@ class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = HeartSerializer
     # lookup_field = 'id'
     lookup_url_kwarg = 'id'
-
 
 # # create a serializer function based view api to view patient details by id, and user_id
 # @api_view(['GET'])

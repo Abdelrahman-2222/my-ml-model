@@ -18,8 +18,8 @@ AWS_S3_FILE_OVERWRITE = False
 SECRET_KEY = 'django-insecure-1uco=85h4(zzctpp7oa#5bb%=wu#pddh-+l_gu+veski===jqc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*',
                  'http://127.0.0.1:3000',
