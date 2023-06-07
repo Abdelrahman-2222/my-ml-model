@@ -15,7 +15,7 @@ To run the code and train the IHD prediction model, follow these steps:
 
 ### Clone the repository:
 
-git clone https://github.com/your-username/IHD-prediction-model.git
+git clone https://github.com/Abdelrahman-2222/my-ml-model.git
 
 ### Install the required dependencies. You can use pip to install them:
 
