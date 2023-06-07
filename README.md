@@ -22,6 +22,7 @@ git clone https://github.com/Abdelrahman-2222/my-ml-model.git
 pip install pandas scikit-learn joblib
 
 ### Modify the file path in the code to match the location of the dataset on your system:
+#### This is the link on kaggle: https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset?resource=download
 
 data = pd.read_csv('path/to/heart_disease_health_indicators_BRFSS2015.csv')
 
@@ -67,7 +68,7 @@ The accuracy of the trained model is computed on the testing set to assess its p
 
 ## **Results**
 
-The model achieves a testing accuracy of X% on the provided dataset. However, please note that the accuracy may vary
+The model achieves a testing accuracy of 90.84% on the provided dataset. However, please note that the accuracy may vary
 depending on the quality and representativeness of the dataset used. It is advisable to evaluate the model's performance
 on a diverse range of data to assess its generalization capabilities.
 
