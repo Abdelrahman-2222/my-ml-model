@@ -45,10 +45,15 @@ model = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=500, alpha=0.
                       verbose=10, random_state=42, tol=0.0001)
 model.fit(X_train, y_train)
 
-# Compute accuracy on the validation set
-y_val_pred = model.predict(X_val)
-accuracy = accuracy_score(y_val, y_val_pred)
-print("Validation Accuracy:", accuracy)
+# # Compute accuracy on the validation set
+# y_val_pred = model.predict(X_val)
+# accuracy = accuracy_score(y_val, y_val_pred)
+# print("Validation Accuracy:", accuracy)
+
+# Compute accuracy on the testing set -> 0.9084
+y_test_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_test_pred)
+print("Testing Accuracy:", accuracy)
 
 # Save the trained model using Joblib
 joblib.dump(model, 'savedModels/MLP_model.joblib')
