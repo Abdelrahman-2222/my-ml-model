@@ -145,11 +145,19 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # CORS
-CORS_ORIGIN_WHITELIST = [
-    'https://django-ml-app.onrender.com',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1',
-    'http://localhost:3000',
-    'http://localhost'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'https://django-ml-app.onrender.com',
+#     'http://127.0.0.1:3000',
+#     'http://127.0.0.1',
+#     'http://localhost:3000',
+#     'http://localhost'
+# ]
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS -> ALLOW ALL ORIGINS
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = []
+CORS_ORIGIN_BLACKLIST = []
+CORS_ORIGIN_REGEX_WHITELIST = []
+CORS_ORIGIN_REGEX_BLACKLIST = []
