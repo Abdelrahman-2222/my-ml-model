@@ -103,11 +103,22 @@ def heart_disease_create(request):
 #     # lookup_field = 'id'
 #     lookup_url_kwarg = 'id'
 
+# class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = HeartDisease.objects.all()
+#     serializer_class = HeartSerializer
+#     lookup_field = 'id'
+#     lookup_url_kwarg = 'id'
+
 class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
-    queryset = HeartDisease.objects.all()
     serializer_class = HeartSerializer
-    lookup_field = 'id'
-    lookup_url_kwarg = 'id'
+    lookup_field = 'user_id'
+    lookup_url_kwarg = 'user_id'
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        queryset = HeartDisease.objects.filter(user_id=user_id)
+        return queryset
+
     #
     # def get(self, request, id, user_id):
     #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id

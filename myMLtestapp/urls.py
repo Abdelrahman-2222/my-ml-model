@@ -14,5 +14,7 @@ urlpatterns = [
     # path('submit-form/', submit_form, name="submit_formFBV"),
     path('fname/<str:name>', heart_disease_name, name="heart_disease_name"),
     path('fcreate/', heart_disease_create, name="heart_disease_create"),
-    path('Clist/<int:id>/<str:user_id>', HeartDiseaseApi.as_view(), name="heart_disease_c_list"),
+    # path('Clist/<str:user_id>', HeartDiseaseApi.as_view(), name="heart_disease_c_list"),
+    path('Clist/<str:user_id>', HeartDiseaseApi.as_view(), name="heart_disease_c_list"),
+
 ]
