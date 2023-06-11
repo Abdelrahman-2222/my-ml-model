@@ -97,11 +97,34 @@ def heart_disease_create(request):
 
 
 # create a serializer class api to update or delete data by id
+# class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = HeartDisease.objects.all()
+#     serializer_class = HeartSerializer
+#     # lookup_field = 'id'
+#     lookup_url_kwarg = 'id'
+
 class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = HeartDisease.objects.all()
     serializer_class = HeartSerializer
-    # lookup_field = 'id'
+    lookup_field = 'id'
     lookup_url_kwarg = 'id'
+    #
+    # def get(self, request, id, user_id):
+    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
+    #     # Add your code to handle the GET request with the specified id and user_id
+    #     # Example usage: heart_disease.user_id = user_id
+    #
+    #
+    # def put(self, request, id, user_id):
+    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
+    #     # Add your code to handle the PUT request with the specified id and user_id
+    #     # Example usage: heart_disease.user_id = user_id
+    #
+    #
+    # def delete(self, request, id, user_id):
+    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
+    #     # Add your code to handle the DELETE request with the specified id and user_id
+    #     # Example usage: if heart_disease.user_id == user_id: ... (perform deletion logic)
 
 # # create a serializer function based view api to view patient details by id, and user_id
 # @api_view(['GET'])
