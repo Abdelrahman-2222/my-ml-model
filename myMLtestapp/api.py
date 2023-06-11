@@ -31,7 +31,7 @@ class SubmitForm(generics.CreateAPIView):
         # Set the submitted_time field explicitly
         heart_disease.submitted_time = timezone.now()
 
-        # Save the instance, which will trigger the apply_nn_model signal handler
+        # Save the instance, which will trigger the apply_MLP_model signal handler
         heart_disease.save()
 
         headers = self.get_success_headers(serializer.data)
@@ -96,19 +96,7 @@ def heart_disease_create(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# create a serializer class api to update or delete data by id
-# class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = HeartDisease.objects.all()
-#     serializer_class = HeartSerializer
-#     # lookup_field = 'id'
-#     lookup_url_kwarg = 'id'
-
-# class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = HeartDisease.objects.all()
-#     serializer_class = HeartSerializer
-#     lookup_field = 'id'
-#     lookup_url_kwarg = 'id'
-
+# create a serializer api to get all data by user_id
 class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = HeartSerializer
     lookup_field = 'user_id'
@@ -118,29 +106,3 @@ class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
         user_id = self.kwargs['user_id']
         queryset = HeartDisease.objects.filter(user_id=user_id)
         return queryset
-
-    #
-    # def get(self, request, id, user_id):
-    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
-    #     # Add your code to handle the GET request with the specified id and user_id
-    #     # Example usage: heart_disease.user_id = user_id
-    #
-    #
-    # def put(self, request, id, user_id):
-    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
-    #     # Add your code to handle the PUT request with the specified id and user_id
-    #     # Example usage: heart_disease.user_id = user_id
-    #
-    #
-    # def delete(self, request, id, user_id):
-    #     heart_disease = self.get_object()  # Retrieve the HeartDisease object based on the id
-    #     # Add your code to handle the DELETE request with the specified id and user_id
-    #     # Example usage: if heart_disease.user_id == user_id: ... (perform deletion logic)
-
-# # create a serializer function based view api to view patient details by id, and user_id
-# @api_view(['GET'])
-# def heart_disease_detail(request, pk):
-#     try:
-#         heart_disease_itself = HeartDisease.objects.get(id=pk)
-#     except HeartDisease.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
