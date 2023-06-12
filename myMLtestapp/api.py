@@ -106,3 +106,32 @@ class HeartDiseaseApi(generics.RetrieveUpdateDestroyAPIView):
         user_id = self.kwargs['user_id']
         queryset = HeartDisease.objects.filter(user_id=user_id)
         return queryset
+
+
+# FBV to delete patient by id
+@api_view(['DELETE'])
+def heart_disease_delete(request, pk):
+    try:
+        heart_disease_itself = HeartDisease.objects.get(id=pk)
+    except HeartDisease.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    heart_disease_itself.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+# FBV to update patient by id
+@api_view(['PUT'])
+def heart_disease_update(request, pk):
+    try:
+        heart_disease_itself = HeartDisease.objects.get(id=pk)
+    except HeartDisease.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = HeartSerializer(instance=heart_disease_itself, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

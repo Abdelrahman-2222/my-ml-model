@@ -1,7 +1,7 @@
 from django.urls import path
 from .api import (heart_disease_name, heart_disease_create,
                   HeartDiseaseApi, heart_disease_list, SubmitForm,
-                  heart_disease_detail)
+                  heart_disease_detail, heart_disease_delete, heart_disease_update)
 
 # submit_form,
 
@@ -16,5 +16,7 @@ urlpatterns = [
     path('fcreate/', heart_disease_create, name="heart_disease_create"),
     # path('Clist/<str:user_id>', HeartDiseaseApi.as_view(), name="heart_disease_c_list"),
     path('each_patient/<str:user_id>/', HeartDiseaseApi.as_view(), name="heart_disease_c_list"),
+    path('patient_delete/<int:pk>/', heart_disease_delete, name="heart_disease_delete"),
+    path('patient_update/<int:pk>/', heart_disease_update, name="heart_disease_update"),
 
 ]
