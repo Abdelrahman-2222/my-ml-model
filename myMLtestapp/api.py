@@ -119,19 +119,30 @@ def heart_disease_delete(request, pk):
     heart_disease_itself.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 # FBV to update patient by id
-@api_view(['PUT'])
-def heart_disease_update(request, pk):
-    try:
-        heart_disease_itself = HeartDisease.objects.get(id=pk)
-    except HeartDisease.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# @api_view(['PUT'])
+# def heart_disease_update(request, pk):
+#     try:
+#         heart_disease_itself = HeartDisease.objects.get(id=pk)
+#     except HeartDisease.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
+#
+#     serializer = HeartSerializer(instance=heart_disease_itself, data=request.data)
+#
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     else:
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    serializer = HeartSerializer(instance=heart_disease_itself, data=request.data)
+# CBV to update patient by id
+class HeartDiseaseUpdate(generics.UpdateAPIView):
+    serializer_class = HeartSerializer
+    lookup_field = 'id'
+    lookup_url_kwarg = 'pk'
 
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        queryset = HeartDisease.objects.filter(id=pk)
+        return queryset
